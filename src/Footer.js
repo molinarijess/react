@@ -1,12 +1,13 @@
 import React from "react";
-import "./Github.css";
+import "./Footer.css";
 
-export default function Github() {
+export default function Footer() {
   return (
-    <footer>
-      Coded by{" "}
+    <footer className="Footer">
+      Created by
       <a
         href="https://github.com/molinarijess"
+        className="my-name"
         target="_blank"
         rel="noreferrer"
       >
