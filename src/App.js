@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Date from "./Date";
 import City from "./City";
 import Temperature from "./Temperature";

@@ -1,13 +1,11 @@
 import React from "react";
-import WeatherDescription from "./WeatherDescription";
 import "./Temperature.css";
 
-export default function Temperature({ temperature, weatherDescription }) {
+export default function Temperature({ temperature }) {
   return (
     <div>
       <div className="Temperature" id="temperature">
         {temperature}ºC
-        <WeatherDescription weatherDescription={weatherDescription} />
       </div>
     </div>
   );
