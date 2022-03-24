@@ -13,7 +13,7 @@ export default function App() {
         <Date week="tuesday, 1 mar 2022" time="17:20" />
         <div className="city-weather">
           <City city="London" />
-          <Temperature temperature={10} weatherDescription="light rain" />
+          <Temperature temperature={20} weatherDescription="sunny" />
         </div>
         <Search />
       </section>
