@@ -13,9 +13,9 @@ export default function Weather({ defaultCity }) {
     const apiKey = "1f17ba351ee112a37d7633ae135f9016";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then((response) => {
-      console.log(response.data);
       setWeatherData({
         ready: true,
+        coordinates: response.data.coord,
         temperature: Math.round(response.data.main.temp),
         city: response.data.name,
         description: response.data.weather[0].description,
@@ -29,7 +29,7 @@ export default function Weather({ defaultCity }) {
       <section id="Weather">
         <CurrentDate formatDate={weatherData.date} />
         {showForecast ? (
-          <Forecast />
+          <Forecast coordinates={weatherData.coordinates} />
         ) : (
           <div className="city-weather">
             <a
