@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import ForecastDaily from "./ForecastDaily";
 import axios from "axios";
-import "./Forecast.css";
 
 export default function Forecast({ coordinates }) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
 
   if (loaded) {
-    return <ForecastDaily data={forecast[0]} />;
+    return (
+      <div className="Forecast">
+        {" "}
+        {forecast.map((dailyForecast, index) => {
+          if (index < 3) {
+            return (
+              <div className="forecast-daily" key={index}>
+                <ForecastDaily data={dailyForecast} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </div>
+    );
   } else {
     let latitude = coordinates.lat;
     let longitude = coordinates.lon;
