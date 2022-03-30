@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import CurrentDate from "./CurrentDate";
+import Forecast from "./Forecast";
+import "./Weather.css";
 import axios from "axios";
 
 export default function Weather({ defaultCity }) {
   const [city, setCity] = useState(defaultCity);
+  const [showForecast, setShowForecast] = useState(false);
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function searchCity() {
     const apiKey = "1f17ba351ee112a37d7633ae135f9016";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then((response) => {
+      console.log(response.data);
       setWeatherData({
         ready: true,
         temperature: Math.round(response.data.main.temp),
@@ -22,15 +26,26 @@ export default function Weather({ defaultCity }) {
 
   if (weatherData.ready) {
     return (
-      <section id="frame">
+      <section id="Weather">
         <CurrentDate formatDate={weatherData.date} />
-        <div className="city-weather">
-          <h1 className="city">{weatherData.city}</h1>
-
-          <div className="temperature">{weatherData.temperature}ºC</div>
-
-          <div className="weatherDescription">{weatherData.description}</div>
-        </div>
+        {showForecast ? (
+          <Forecast />
+        ) : (
+          <div className="city-weather">
+            <a
+              href="/"
+              className="link-to-forecast"
+              onClick={(event) => {
+                event.preventDefault();
+                setShowForecast(true);
+              }}
+            >
+              <h1 className="city">{weatherData.city}</h1>
+            </a>
+            <div className="temperature">{weatherData.temperature}ºC</div>
+            <div className="weatherDescription">{weatherData.description}</div>
+          </div>
+        )}
         <form
           onSubmitCapture={(event) => {
             event.preventDefault();
