@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CurrentDate from "./CurrentDate";
 import Forecast from "./Forecast";
 import "./Weather.css";
@@ -8,6 +8,10 @@ export default function Weather({ defaultCity }) {
   const [city, setCity] = useState(defaultCity);
   const [showForecast, setShowForecast] = useState(false);
   const [weatherData, setWeatherData] = useState({ ready: false });
+
+  useEffect(() => {
+    setShowForecast(false);
+  }, [city]);
 
   function searchCity() {
     const apiKey = "1f17ba351ee112a37d7633ae135f9016";

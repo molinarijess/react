@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ForecastDaily from "./ForecastDaily";
 import "./Forecast.css";
 import { AiOutlineLeft } from "react-icons/ai";
@@ -9,6 +9,10 @@ import axios from "axios";
 export default function Forecast({ coordinates }) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [coordinates]);
 
   if (loaded) {
     return (
