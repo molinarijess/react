@@ -1,0 +1,16 @@
+.forecast-week {
+  font-size: 18px;
+  margin: 0 0 4px;
+  text-transform: lowercase;
+}
+
+.forecast-max-temp {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.forecast-min-temp {
+  font-size: 15px;
+  font-weight: 300;
+  opacity: 0.8;
+}

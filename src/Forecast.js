@@ -26,9 +26,9 @@ export default function Forecast({ coordinates }) {
         </a>{" "}
         <div className="forecast-show-data">
           {forecast.map((dailyForecast, index) => {
-            if (index < 3) {
+            if (index < 4) {
               return (
-                <div className="forecast-daily" key={index}>
+                <div className="forecast-daily-data" key={index}>
                   <ForecastDaily data={dailyForecast} />
                 </div>
               );

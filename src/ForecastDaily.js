@@ -14,8 +14,9 @@ export default function ForecastDaily({ data }) {
       <p className="forecast-week">{week()}</p>
       <div>
         <span className="forecast-max-temp">{Math.round(data.temp.max)}ºC</span>{" "}
-        |{" "}
-        <span className="forecast-min-temp">{Math.round(data.temp.min)}ºC</span>
+        <span className="forecast-min-temp">
+          |{Math.round(data.temp.min)}ºC
+        </span>
       </div>
       <small className="forecast-description">
         {data.weather[0].description}
