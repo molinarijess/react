@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CurrentDate from "./CurrentDate";
-import Forecast from "./Forecast";
+import WeatherDay from "./WeatherDay";
 import "./Weather.css";
 import axios from "axios";
 
 export default function Weather({ defaultCity }) {
   const [city, setCity] = useState(defaultCity);
-  const [showForecast, setShowForecast] = useState(false);
   const [weatherData, setWeatherData] = useState({ ready: false });
-
-  useEffect(() => {
-    setShowForecast(false);
-  }, [city]);
 
   function searchCity() {
     const apiKey = "1f17ba351ee112a37d7633ae135f9016";
@@ -32,26 +27,9 @@ export default function Weather({ defaultCity }) {
     return (
       <section id="Weather">
         <CurrentDate formatDate={weatherData.date} />
-        {showForecast ? (
-          <Forecast coordinates={weatherData.coordinates} />
-        ) : (
-          <div className="city-weather">
-            <a
-              href="/"
-              className="link-to-forecast"
-              onClick={(event) => {
-                event.preventDefault();
-                setShowForecast(true);
-              }}
-            >
-              <h1 className="city">{weatherData.city}</h1>
-            </a>
-            <div className="temperature">{weatherData.temperature}ºC</div>
-            <div className="weatherDescription">{weatherData.description}</div>
-          </div>
-        )}
+        <WeatherDay data={weatherData} />
         <form
-          onSubmitCapture={(event) => {
+          onSubmit={(event) => {
             event.preventDefault();
             searchCity();
           }}

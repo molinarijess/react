@@ -1,0 +1,30 @@
+.link-to-forecast {
+  text-decoration: none;
+  color: rgb(111, 76, 91);
+  transition: all 240ms ease-in-out;
+}
+
+.link-to-forecast:hover {
+  text-decoration: underline;
+}
+
+.city {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.city:hover {
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.temperature {
+  font-size: 22px;
+  font-weight: bolder;
+}
+
+.weatherDescription {
+  font-size: 11px;
+  font-weight: 200;
+  text-transform: capitalize;
+}

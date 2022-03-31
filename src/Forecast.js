@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+//import { useNavigate } from "react-router";
 import ForecastDaily from "./ForecastDaily";
 import "./Forecast.css";
 import { AiOutlineLeft } from "react-icons/ai";
@@ -6,9 +7,10 @@ import Weather from "./Weather";
 
 import axios from "axios";
 
-export default function Forecast({ coordinates }) {
+export default function Forecast({ coordinates, citySearched }) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
+  //const navigate = useNavigate();
 
   useEffect(() => {
     setLoaded(false);
@@ -22,6 +24,7 @@ export default function Forecast({ coordinates }) {
           className="back-to-weather"
           onClick={() => {
             <Weather />;
+            //navigate(<Weather />);
           }}
         >
           <span className="back-to-weather">
